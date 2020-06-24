@@ -1,15 +1,152 @@
-<html lang="ja">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>WSGI テスト</title>
-    <link rel="stylesheet" href="default.css" />
+    <title>Real or Fake</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit="no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/custom-responsive-style.css" />
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/plugin-active.js"></script>
   </head>
   <body>
-    <div>
-      <h1>
-        ログイン
-      </h1>
-      %login_form%
+    <header>
+      <div class="mobile-logo">
+        <a href=""><img src="images/ds-logo.png" /></a>
+      </div>
+      <a class="menu-toggle rounded" href="#">
+        <i class="fa fa-bars"></i>
+      </a>
+      <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a class="smooth-scroll" href="#Header"></a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a class="smooth-scroll" href="#Services">Challenge</a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a class="smooth-scroll" href="#OurBlog">History</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="Banner">
+      <div class="logo">
+        <img src="images/ds-logo.png" />
+      </div>
+      <div class="blacksection">
+        <h1>Real<br />or<br />Fake</h1>
+      </div>
+    </section>
+
+    <section id="Services">
+      <div class="container">
+        <h2>Challenge</h2>
+        <h3>人間の限界に挑戦する</h3>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="each-services">
+              <h3>5問</h3>
+              <p>
+                忙しい人向け
+              </p>
+            </div>
+            <div class="tryitout">
+              <a href="Learnmore"><span>start</span></a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="each-services">
+              <h3>10問</h3>
+              <p>
+                ちょっと試してみたい人向け
+              </p>
+            </div>
+            <div class="tryitout">
+              <a href="Learnmore"><span>start</span></a>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+            <div class="each-services">
+              <h3>50問</h3>
+              <p>
+                外に出られなくて暇な人向け
+              </p>
+            </div>
+            <div class="tryitout">
+              <a href="Learnmore"><span>start</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="OurBlog">
+      <div class="container">
+        <h2>History</h2>
+        <p>
+          ディープラーニングが人の顔を生成するまでの道のり
+        </p>
+        <div class="blog-wrap">
+          <div class="each-block clearfix one">
+            <div class="icon">
+              <img src="images/gan2014.png" />
+            </div>
+            <div class="blog-intro">
+              <h3>2014</h3>
+              <p>
+                Generative Adversarial Networks が Ian Goodfellow 氏によって提唱
+              </p>
+            </div>
+          </div>
+
+          <div class="each-block clearfix two">
+            <div class="icon">
+              <img src="images/gan2018.png" />
+            </div>
+            <div class="blog-intro">
+              <h3>2018</h3>
+              <p>
+                Self-Attention Generative Adversarial Networks が提唱
+              </p>
+            </div>
+          </div>
+
+          <div class="each-block clearfix three">
+            <div class="icon">
+              <img src="images/gan2020.png" />
+            </div>
+            <div class="blog-intro">
+              <h3>2020</h3>
+              <p>
+                NVlabs が StyleGAN2 を提唱
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="Contact">
+      <div class="container">
+        <p>Credits</p>
+        <p>Real Images : [tkarras / progressive_growing_of_gans]</p>
+        <p>Fake Images : [NVlabs / stylegan2]</p>
+        <p>CSS Theme : [Position2 / free-bootstrap-theme-dgs]</p>
+      </div>
+    </footer>
+
+    <div class="copyright">
+      <p>Copyright ©︎ 2020 TakaoNarikawa</p>
+      <p>All rights reserved.</p>
     </div>
   </body>
 </html>

@@ -5,8 +5,7 @@ class BasePage:
     def __call__(self, env):
         body = self.body(env)
         status = self.status()
-        header = self.header(content_length=len(body))
-        print(status)
+        header = self.header(content_length=len(body), env=env)
         return status, header, body
 
     def body(self):
@@ -15,7 +14,7 @@ class BasePage:
     def status(self):
         return '200 OK'
 
-    def header(self, content_length):
+    def header(self, content_length, env):
         return [('Content-Type', 'text/html; charset=utf-8'), ('Content-Length', str(content_length))]
 
     def load_html(self, path, embedding_dict={}):

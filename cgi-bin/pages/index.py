@@ -18,5 +18,4 @@ def random_string(n=16):
 class Index(BasePage):
     def body(self, env):
         gen_id = random_string()
-        print("gen_id", gen_id)
         return self.load_html("../static/index.html", embedding_dict={"id": gen_id})

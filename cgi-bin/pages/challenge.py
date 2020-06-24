@@ -77,7 +77,6 @@ class Challenge(BasePage):
             try:
                 cur.execute(sql)
             except sqlite3.OperationalError(e):
-                print(e)
                 return self.bad_request("エラー：指定IDのデータベースが見つかりませんでした。")
 
             con.commit()
@@ -91,7 +90,6 @@ class Challenge(BasePage):
         res = cur.fetchall()[0]
         [i, pred, true, img_a, img_b] = res
 
-        print([i, pred, true, img_a, img_b])
         cur.close()
         con.close()
 

@@ -11,9 +11,9 @@ import sqlite3
 from .base import BasePage
 
 real_imgs = [f"../cgi-bin/real_imgs/{os.path.basename(f)}"
-             for f in glob.glob("./real_imgs/*.png")]
+             for f in glob.glob("./real_imgs/*.jpg")]
 fake_imgs = [f"../cgi-bin/fake_imgs/{os.path.basename(f)}"
-             for f in glob.glob("./fake_imgs/*.png")]
+             for f in glob.glob("./fake_imgs/*.jpg")]
 
 print(random.sample(real_imgs, 5))
 

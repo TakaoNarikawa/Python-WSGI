@@ -27,3 +27,6 @@ class BasePage:
             html_text = html_text.replace(f"%{key}%", value)
 
         return html_text.encode('utf-8')
+
+    def bad_request(self, message="Bad Request"):
+        return self.load_html("../static/bad_request.html", embedding_dict={"message": message})

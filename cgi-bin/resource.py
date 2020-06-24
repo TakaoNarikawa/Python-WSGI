@@ -12,10 +12,11 @@ from pages.base import BasePage
 class Static(BasePage):
     def body(self, env):
         request_path = env.get("PATH_INFO")
-
+        # bootstrap.min.css.mapは読み込みエラーが発生するのでスルー
+        if request_path.find("bootstrap.min.css.map") > 0:
+            return "".encode('utf-8')
         try:
-            print("os.getcwd()", os.getcwd())
-            with open(f"../static{request_path}") as f:
+            with open(f"..{request_path}") as f:
                 static = f.read().encode('utf-8')
 
         except Exception as e:
@@ -33,10 +34,8 @@ class Js(Static):
 class Image(BasePage):
     def body(self, env):
         request_path = env.get("PATH_INFO")
-
         try:
-            print("os.getcwd()", os.getcwd())
-            with open(f"../static{request_path}", "rb") as f:
+            with open(f"..{request_path}", "rb") as f:
                 static = f.read()
 
         except Exception as e:
@@ -47,4 +46,4 @@ class Image(BasePage):
     def header(self, content_length, env):
         request_path = env.get("PATH_INFO")
         ext = os.path.splitext(request_path)[1][1:]
-        return [('Content-Type', f'image/{ext}'), ('Content-Length', str(os.stat(f"../static{request_path}").st_size))]
+        return [('Content-Type', f'image/{ext}'), ('Content-Length', str(os.stat(f"..{request_path}").st_size))]

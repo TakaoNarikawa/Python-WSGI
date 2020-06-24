@@ -8427,8 +8427,13 @@ body.active .mscroll {
 /* Banner style ends here */
 /* Our Digital services style begins here */
 #Services {
+  margin: 240px 0px;
   padding: 60px 0 90px 0;
   text-align: center;
+}
+#Services img {
+  margin: 80px 0px;
+  min-width: 300px;
 }
 #Services h2 {
   color: #000;
@@ -8436,12 +8441,12 @@ body.active .mscroll {
   margin-bottom: 90px;
 }
 #Services .each-services {
-  padding-top: 40px;
+  margin-top: 40px;
 }
 #Services .each-services img {
   width: 80px;
   height: auto;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 #Services .each-services h3 {
   color: #000;
@@ -8456,6 +8461,10 @@ body.active .mscroll {
   line-height: 120%;
   font-family: "Futura PT book";
 }
+#Services .selected-img {
+  border: 5px solid #e83e8c;
+}
+
 #Services .tryitout {
   text-align: center;
 }
@@ -8489,6 +8498,43 @@ body.active .mscroll {
 }
 
 #Services .tryitout a:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+#Services .back-to-top {
+  text-align: center;
+}
+#Services .back-to-top a {
+  background-color: #e6275c;
+  color: #fff;
+  padding: 20px 30px;
+  font: 700 24px/100% "Futura PT book";
+  display: inline-block;
+  border-radius: 5px;
+  width: 300px;
+}
+#Services .back-to-top a span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#Services .back-to-top a span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#Services .back-to-top a:hover span {
+  padding-right: 25px;
+}
+
+#Services .back-to-top a:hover span:after {
   opacity: 1;
   right: 0;
 }

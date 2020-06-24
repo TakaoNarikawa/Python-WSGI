@@ -8,6 +8,15 @@ import sqlite3
 
 from .base import BasePage
 
+import random
+import string
+
+def random_string(n=16):
+    return ''.join(random.choice(string.ascii_lowercase) for i in range(n))
+
+
 class Index(BasePage):
     def body(self, env):
-        return self.load_html("../static/index.html")
+        gen_id = random_string()
+        print("gen_id", gen_id)
+        return self.load_html("../static/index.html", embedding_dict={"id": gen_id})

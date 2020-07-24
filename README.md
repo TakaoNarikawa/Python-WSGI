@@ -1,11 +1,13 @@
 ![](https://github.com/TakaoNarikawa/Univ-CS-WSGI/blob/master/logo.png?raw=true)
 
-# コンピュータ科学科実験 WSGI 課題
-
 ## 概要
 
-大学の課題のソースコード
+コンピュータ科学科実験 WSGI 課題
+
 Python WCGI を用いて Web アプリケーションを作成した
+
+GAN（Generative Adversarial Network）の Descriminator が行っていることを、
+人間にチャレンジさせてみようというアプリケーションである。
 
 ## Getting Started
 

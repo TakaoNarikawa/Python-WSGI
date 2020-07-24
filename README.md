@@ -21,7 +21,9 @@ $ python -m run [-h] [--port PORT] [--dbname DBNAME]
 
 ## Reference
 
-`cgi-bin/fake_imgs/` に存在する画像は [NVlabs / stylegan2](https://github.com/NVlabs/stylegan2) によって生成されたものを使用している。
+`cgi-bin/real_imgs/` に存在する画像は [NVlabs / ffhq-dataset](https://github.com/NVlabs/ffhq-dataset) によって生成されたものを使用した。
+
+`cgi-bin/fake_imgs/` に存在する画像は [NVlabs / stylegan2](https://github.com/NVlabs/stylegan2) によって生成されたものを使用した。
 
 ```
 @article{Karras2019stylegan2,

@@ -63,7 +63,7 @@ def init_db(config, fake_imgs, dummy=False):
         cur.execute(create_table)
         con.commit()
 
-        if dummy:　# ダミーデータでDBを初期化
+        if dummy: # ダミーデータでDBを初期化
             dummy_data = create_dummy_data(n=len(fake_imgs))
             for img, d in zip(fake_imgs, dummy_data):
                 img_name = os.path.splitext(os.path.basename(img))[0]

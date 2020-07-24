@@ -1,16 +1,28 @@
 # コンピュータ科学科実験 WSGI 課題
 
+## 概要
+
+大学の課題のソースコード
+Python WCGI を用いて Web アプリケーションを作成した
+
 ## Getting Started
 
-次のコマンドでサーバーを実行できる。
-ポート番号はデフォルトで 8080
-
-```
-python3 -m run [port]
+```sh
+$ cd cgi-bin
+$ python -m run [-h] [--port PORT] [--dbname DBNAME]
 ```
 
-Web ブラウザーで次を開く
+
+## Reference
+
+`cgi-bin/fake_imgs/` に存在する画像は `NVlabs / stylegan2` によって生成されたものを使用している。
 
 ```
-http://localhost:port/
+@article{Karras2019stylegan2,
+  title   = {Analyzing and Improving the Image Quality of {StyleGAN}},
+  author  = {Tero Karras and Samuli Laine and Miika Aittala and Janne Hellsten and Jaakko Lehtinen and Timo Aila},
+  journal = {CoRR},
+  volume  = {abs/1912.04958},
+  year    = {2019},
+}
 ```

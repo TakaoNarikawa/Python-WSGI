@@ -1,5 +1,7 @@
 ![](https://github.com/TakaoNarikawa/Univ-CS-WSGI/blob/master/logo.png?raw=true)
 
+![](https://github.com/TakaoNarikawa/Univ-CS-WSGI/blob/master/screenshots/real-fake.png?raw=true)
+
 ## 概要
 
 コンピュータ科学科実験 WSGI 課題

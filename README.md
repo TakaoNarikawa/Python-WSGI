@@ -6,7 +6,7 @@
 ポート番号はデフォルトで 8080
 
 ```
-python3 wsgi.py [port]
+python3 -m run [port]
 ```
 
 Web ブラウザーで次を開く

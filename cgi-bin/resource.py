@@ -1,13 +1,11 @@
-# CGIモジュールをインポート
 import cgi
 import cgitb
-cgitb.enable()
-
-# sqlite3（SQLサーバ）モジュールをインポート
 import sqlite3
 import os
 
 from pages.base import BasePage
+
+cgitb.enable()
 
 class Static(BasePage):
     def body(self, env):
@@ -26,10 +24,16 @@ class Static(BasePage):
 
 class Css(Static):
     def header(self, content_length, env):
-        return [('Content-Type', 'text/css; charset=utf-8'), ('Content-Length', str(content_length))]
+        return [
+            ('Content-Type', 'text/css; charset=utf-8'),
+            ('Content-Length', str(content_length))
+        ]
 class Js(Static):
     def header(self, content_length, env):
-        return [('Content-Type', 'application/javascript; charset=utf-8'), ('Content-Length', str(content_length))]
+        return [
+            ('Content-Type', 'application/javascript; charset=utf-8'),
+            ('Content-Length', str(content_length))
+        ]
 
 class Image(BasePage):
     def body(self, env):
@@ -46,4 +50,7 @@ class Image(BasePage):
     def header(self, content_length, env):
         request_path = env.get("PATH_INFO")
         ext = os.path.splitext(request_path)[1][1:]
-        return [('Content-Type', f'image/{ext}'), ('Content-Length', str(os.stat(f"..{request_path}").st_size))]
+        return [
+            ('Content-Type', f'image/{ext}'),
+            ('Content-Length', str(os.stat(f"..{request_path}").st_size))
+        ]

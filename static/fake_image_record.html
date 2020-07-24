@@ -3,7 +3,7 @@
   <head>
     <title>Real or Fake</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" shrink-to-fit="no" />
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1" shrink-to-fit="no" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link
       rel="stylesheet"
@@ -15,30 +15,43 @@
     <script type="text/javascript" src="static/scripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="static/scripts/plugin-active.js"></script>
   </head>
+
   <body>
     <section id="Challenge">
       <div class="container">
-        <h2>Real or Fake</h2>
-        <h3>どっちが本物の顔写真でしょう？</h3>
+        <h3>生成画像の戦績</h3>
         <br />
-        <h3>%i%/%n%</h3>
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="each-services">
-              <img src="%img_a%" />
-            </div>
-            <div class="tryitout">
-              <a href="%next_href_a%"><span>A</span></a>
+              <img src="../cgi-bin/fake_imgs/%img_id%.jpg" />
             </div>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="each-services">
-              <img src="%img_b%" />
-            </div>
-            <div class="tryitout">
-              <a href="%next_href_b%"><span>B</span></a>
-            </div>
+          <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6" style="margin-top: 160px;">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>順位</td>
+                  <td>%rank% / %leader_board_count% 位</td>
+                </tr>
+                <tr>
+                  <td>騙した割合</td>
+                  <td>%decieve_rate%</td>
+                </tr>
+                <tr>
+                  <td>問題に使用された回数</td>
+                  <td>%try_count%</td>
+                </tr>
+                <tr>
+                  <td>人を騙した回数</td>
+                  <td>%decieve_count%</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
+        <div class="back-to-top" style="padding-top: 60px;">
+          <a href="/"><span>トップページに戻る</span></a>
         </div>
       </div>
     </section>
@@ -48,7 +61,7 @@
         <p>Credits</p>
         <p>Real Images : [tkarras / progressive_growing_of_gans]</p>
         <p>Fake Images : [NVlabs / stylegan2]</p>
-        <p>CSS Theme : [Position2 / free-bootstrap-theme-dgs]</p>
+        <p>CSS tdeme : [Position2 / free-bootstrap-tdeme-dgs]</p>
       </div>
     </footer>
 

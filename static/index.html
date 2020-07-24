@@ -29,10 +29,10 @@
             <a class="smooth-scroll" href="#Header"></a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="smooth-scroll" href="#Services">Challenge</a>
+            <a class="smooth-scroll" href="#Challenge">Challenge</a>
           </li>
           <li class="sidebar-nav-item">
-            <a class="smooth-scroll" href="#OurBlog">History</a>
+            <a class="smooth-scroll" href="#History">History</a>
           </li>
         </ul>
       </nav>
@@ -47,7 +47,7 @@
       </div>
     </section>
 
-    <section id="Services">
+    <section id="Challenge">
       <div class="container">
         <h2>Challenge</h2>
         <h3>人間の限界に挑戦する</h3>
@@ -86,22 +86,37 @@
             </div>
           </div>
         </div>
+        <h3 style="margin: 120px 0px 30px;">リーダーボード</h3>
+        <h5 style="margin: 60px 0px 30px;">最も人を騙した生成画像一覧</h4>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>騙した割合</th>
+              <th>問題に使用された回数</th>
+              <th>人を騙した回数</th>
+              <th>画像リンク</th>
+            </tr>
+          </thead>
+          <tbody>
+            %leader_board%
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section id="OurBlog">
+    <section id="History">
       <div class="container">
-        <h2>History</h2>
-        <p>
-          ディープラーニングが人の顔を生成するまでの道のり
-        </p>
+        <h2 style="margin-bottom: 30px;">History</h2>
+        <p>ディープラーニングが人の顔を生成するまでの道のり</p>
+        <p>一部の研究のみをピックアップしています</p>
         <div class="blog-wrap">
           <div class="each-block clearfix one">
             <div class="icon">
               <img src="static/images/gan2014.png" />
             </div>
             <div class="blog-intro">
-              <h3>2014</h3>
+              <h3 style="margin: 10px;">2014</h3>
               <p>
                 Generative Adversarial Networks が Ian Goodfellow 氏によって提唱
               </p>
@@ -113,7 +128,7 @@
               <img src="static/images/gan2018.png" />
             </div>
             <div class="blog-intro">
-              <h3>2018</h3>
+              <h3 style="margin: 10px;">2018</h3>
               <p>
                 Self-Attention Generative Adversarial Networks が提唱
               </p>
@@ -125,7 +140,7 @@
               <img src="static/images/gan2020.png" />
             </div>
             <div class="blog-intro">
-              <h3>2020</h3>
+              <h3 style="margin: 10px;">2020</h3>
               <p>
                 NVlabs が StyleGAN2 を提唱
               </p>

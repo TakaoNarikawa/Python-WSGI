@@ -1,21 +1,23 @@
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import sys
-from app import Router
+import argparse
+from app import Application
 from wsgiref import simple_server
 
-app = Router()
-app.init_db()
-
-def application(env,start_response):
-    return app(env, start_response)
-
 if __name__ == '__main__':
-    port = 8080
-    if len(sys.argv) == 2:
-        port = int(sys.argv[1])
+    parser = argparse.ArgumentParser(description='2020春学期 コンピュータ科学科実験 WSGI 課題')
+    parser.add_argument('--port', type=int, default=8080,
+                        help='WSGIサーバーで使用するポート')
+    parser.add_argument('--dbname', type=str, default='database.db',
+                        help='データベースのファイル名')
+    args = parser.parse_args()
 
-    print(f"Python WSGI Server starting...\naddresss: http://localhost:{port}/\n\n")
-    server = simple_server.make_server('', port, application)
+    app = Application(args)
+    app.init_db()
+
+    application = lambda env,start_response: app(env, start_response)
+
+    print(f"\nStarting Python WSGI Server ...\naddresss: http://localhost:{args.port}/\n\n")
+    server = simple_server.make_server('', args.port, application)
     server.serve_forever()

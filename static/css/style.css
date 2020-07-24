@@ -8426,49 +8426,49 @@ body.active .mscroll {
 }
 /* Banner style ends here */
 /* Our Digital services style begins here */
-#Services {
+#Challenge {
   margin: 240px 0px;
   padding: 60px 0 90px 0;
   text-align: center;
 }
-#Services img {
+#Challenge img {
   margin: 80px 0px;
   min-width: 300px;
 }
-#Services h2 {
+#Challenge h2 {
   color: #000;
   font: 68px/125% "Futura PT book";
   margin-bottom: 90px;
 }
-#Services .each-services {
+#Challenge .each-services {
   margin-top: 40px;
 }
-#Services .each-services img {
+#Challenge .each-services img {
   width: 80px;
   height: auto;
   margin-bottom: 30px;
 }
-#Services .each-services h3 {
+#Challenge .each-services h3 {
   color: #000;
   font-size: 30px;
   line-height: 110%;
   font-family: "Futura PT book";
   margin-bottom: 20px;
 }
-#Services .each-services p {
+#Challenge .each-services p {
   color: #000;
   font-size: 18px;
   line-height: 120%;
   font-family: "Futura PT book";
 }
-#Services .selected-img {
+#Challenge .selected-img {
   border: 5px solid #e83e8c;
 }
 
-#Services .tryitout {
+#Challenge .tryitout {
   text-align: center;
 }
-#Services .tryitout a {
+#Challenge .tryitout a {
   background-color: #e6275c;
   color: #fff;
   padding: 20px 30px;
@@ -8477,14 +8477,14 @@ body.active .mscroll {
   border-radius: 5px;
   width: 160px;
 }
-#Services .tryitout a span {
+#Challenge .tryitout a span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#Services .tryitout a span:after {
+#Challenge .tryitout a span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -8493,19 +8493,19 @@ body.active .mscroll {
   transition: 0.5s;
 }
 
-#Services .tryitout a:hover span {
+#Challenge .tryitout a:hover span {
   padding-right: 25px;
 }
 
-#Services .tryitout a:hover span:after {
+#Challenge .tryitout a:hover span:after {
   opacity: 1;
   right: 0;
 }
 
-#Services .back-to-top {
+#Challenge .back-to-top {
   text-align: center;
 }
-#Services .back-to-top a {
+#Challenge .back-to-top a {
   background-color: #e6275c;
   color: #fff;
   padding: 20px 30px;
@@ -8514,14 +8514,14 @@ body.active .mscroll {
   border-radius: 5px;
   width: 300px;
 }
-#Services .back-to-top a span {
+#Challenge .back-to-top a span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#Services .back-to-top a span:after {
+#Challenge .back-to-top a span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -8530,11 +8530,11 @@ body.active .mscroll {
   transition: 0.5s;
 }
 
-#Services .back-to-top a:hover span {
+#Challenge .back-to-top a:hover span {
   padding-right: 25px;
 }
 
-#Services .back-to-top a:hover span:after {
+#Challenge .back-to-top a:hover span:after {
   opacity: 1;
   right: 0;
 }
@@ -8587,64 +8587,64 @@ body.active .mscroll {
 }
 /* Our work end */
 /* Our blog begin */
-#OurBlog {
+#History {
   padding: 60px 0;
   padding-bottom: 200px;
   background-color: #ececec;
 }
-#OurBlog h2 {
+#History h2 {
   color: #000;
   font: 68px/125% "Futura PT book";
   margin-bottom: 20px;
   text-align: center;
 }
-#OurBlog p {
+#History p {
   color: #000;
   font: 18px/125% "Futura PT book";
   margin-bottom: 20px;
   text-align: center;
 }
-#OurBlog .blog-wrap {
+#History .blog-wrap {
   position: relative;
   height: 700px;
   margin: 60px 0;
 }
-#OurBlog .each-block {
+#History .each-block {
   position: absolute;
   width: 420px;
 }
-#OurBlog .each-block.one {
+#History .each-block.one {
   left: 0;
   top: 0;
 }
-#OurBlog .each-block.two {
+#History .each-block.two {
   top: 30%;
   right: 0;
 }
-#OurBlog .each-block.three {
+#History .each-block.three {
   top: 70%;
   left: 0;
 }
-#OurBlog .each-block .icon {
+#History .each-block .icon {
   float: left;
   background-color: #e6275c;
   padding: 8px 10px 4px;
   margin-right: 16px;
 }
-#OurBlog .blog-wrap .blog-intro {
+#History .blog-wrap .blog-intro {
   float: left;
   width: 80%;
 }
-#OurBlog .blog-wrap .blog-intro h3 {
+#History .blog-wrap .blog-intro h3 {
   font: 700 24px/100% "Futura PT book";
   margin: 0 0 6px;
 }
-#OurBlog .blog-intro p {
+#History .blog-intro p {
   text-align: left;
   padding-left: 45px;
   position: relative;
 }
-#OurBlog .blog-intro p:before {
+#History .blog-intro p:before {
   content: "";
   width: 36px;
   height: 2px;
@@ -8653,7 +8653,7 @@ body.active .mscroll {
   left: 0;
   top: 6px;
 }
-#OurBlog .blog-wrap:before {
+#History .blog-wrap:before {
   content: "";
   width: 2px;
   height: 100%;
@@ -8662,7 +8662,7 @@ body.active .mscroll {
   left: 50%;
   transform: translateX(-50%);
 }
-#OurBlog .each-block:before {
+#History .each-block:before {
   content: "";
   width: 14px;
   height: 14px;
@@ -8673,14 +8673,14 @@ body.active .mscroll {
   top: 50%;
   transform: translateY(-50%);
 }
-#OurBlog .each-block.two:before {
+#History .each-block.two:before {
   right: auto;
   left: -34%;
 }
-#OurBlog .learnmore {
+#History .learnmore {
   text-align: center;
 }
-#OurBlog .learnmore a {
+#History .learnmore a {
   background-color: #e6275c;
   color: #fff;
   padding: 20px 30px;
@@ -8689,14 +8689,14 @@ body.active .mscroll {
   border-radius: 5px;
   width: 240px;
 }
-#OurBlog .learnmore a span {
+#History .learnmore a span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-#OurBlog .learnmore a span:after {
+#History .learnmore a span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -8705,11 +8705,11 @@ body.active .mscroll {
   transition: 0.5s;
 }
 
-#OurBlog .learnmore a:hover span {
+#History .learnmore a:hover span {
   padding-right: 25px;
 }
 
-#OurBlog .learnmore a:hover span:after {
+#History .learnmore a:hover span:after {
   opacity: 1;
   right: 0;
 }

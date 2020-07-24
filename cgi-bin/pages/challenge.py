@@ -1,21 +1,22 @@
 import os
 import glob
 import random
-# CGIモジュールをインポート
 import cgi
 import cgitb
+import sqlite3
+
+from pages.base import BasePage
+
 cgitb.enable()
 
-# sqlite3（SQLサーバ）モジュールをインポート
-import sqlite3
-from .base import BasePage
-
-real_imgs = [f"../cgi-bin/real_imgs/{os.path.basename(f)}"
-             for f in glob.glob("./real_imgs/*.jpg")]
-fake_imgs = [f"../cgi-bin/fake_imgs/{os.path.basename(f)}"
-             for f in glob.glob("./fake_imgs/*.jpg")]
-
-print(random.sample(real_imgs, 5))
+real_imgs = [
+    f"../cgi-bin/real_imgs/{os.path.basename(f)}"
+    for f in glob.glob("./real_imgs/*.jpg")
+]
+fake_imgs = [
+    f"../cgi-bin/fake_imgs/{os.path.basename(f)}"
+    for f in glob.glob("./fake_imgs/*.jpg")
+]
 
 def optional_parse(s, optional=0):
     if s == None:
@@ -58,24 +59,34 @@ class Challenge(BasePage):
         cur = con.cursor()
         con.text_factory = str
 
+        # 初回時、回答結果を保持するためのデータベースを作成する
+        # 予め回答結果を初期化しておく
         if i == 0:
             try:
-                sql = f'create table {id_}(i int, pred int, true int, img_a varchar(30), img_b varchar(30));'
-                cur.execute(sql)
+                create_table = f'''
+                    create table
+                    if not exists {id_}(i int, pred int, true int, img_a varchar(30), img_b varchar(30));
+                '''
+                cur.execute(create_table)
                 con.commit()
 
                 for j, (real_img, fake_img) in enumerate(zip(random.sample(real_imgs, n), random.sample(fake_imgs, n))):
                     true_v = 1 if random.random() > .5 else 0
-                    sql = f'insert into {id_} values ({j+1}, 0, {true_v}, "{real_img if true_v == 0 else fake_img}", "{real_img if true_v == 1 else fake_img}");'
-                    cur.execute(sql)
+                    insert_value = f'''
+                        insert into {id_} values
+                        ({j+1}, 0, {true_v}, "{real_img if true_v == 0 else fake_img}", "{real_img if true_v == 1 else fake_img}");
+                    '''
+                    cur.execute(insert_value)
                     con.commit()
             except sqlite3.OperationalError:
                 pass
 
+        # i > 0 の時、URLパラメータで前回の回答が含まれるはずなので、その内容をデータベースに書き込む
         if i > 0:
-            sql = f'update {id_} set pred = {0 if a_selected else 1} where i = {i};'
+            update_value = f'update {id_} set pred = {0 if a_selected else 1} where i = {i};'
             try:
-                cur.execute(sql)
+                cur.execute(update_value)
+                con.commit()
             except sqlite3.OperationalError(e):
                 return self.bad_request("エラー：指定IDのデータベースが見つかりませんでした。")
 
@@ -85,10 +96,9 @@ class Challenge(BasePage):
         next_href_b = f"{'challenge' if i < n-1 else 'result'}?n={n}&i={i+1}&id={id_}&ans=B"
 
         # 表示する画像の指定
-        sql = f'select * from {id_} where i = {i+1}'
-        cur.execute(sql)
-        res = cur.fetchall()[0]
-        [i, pred, true, img_a, img_b] = res
+        get_view_info = f'select * from {id_} where i = {i+1}'
+        cur.execute(get_view_info)
+        [i, pred, true, img_a, img_b] = cur.fetchall()[0]
 
         cur.close()
         con.close()
@@ -98,8 +108,8 @@ class Challenge(BasePage):
             "img_b": img_b,
             "next_href_a": next_href_a,
             "next_href_b": next_href_b,
-            "i": str(i),
-            "n": str(n)
+            "i": i,
+            "n": n
         })
 
 class Result(Challenge):
@@ -122,6 +132,23 @@ class Result(Challenge):
         <h3>{'正解' if true == pred else '不正解'}</h3>
         '''
 
+    # FIXME: ページを読み込み治すと新たに結果が追加されてしまう
+    def update_fake_img_leader_board(self, fake_img_res, cur, con):
+        update_leader_board = ''
+        for img_path, correct in fake_img_res:
+            img_id = os.path.splitext(os.path.basename(img_path))[0]
+            update_leader_board += f'''
+                UPDATE images SET try_count=try_count+1
+                where images.id == "{img_id}";
+            '''
+            if not correct:
+                update_leader_board += f'''
+                UPDATE images SET decieve_count=decieve_count+1
+                where images.id == "{img_id}";
+                '''
+        cur.executescript(update_leader_board)
+        con.commit()
+
     def body(self, env):
         ans, id_, n, i = self.parse(env)
 
@@ -137,6 +164,7 @@ class Result(Challenge):
         sql = f'update {id_} set pred = {0 if a_selected else 1} where i = {i};'
         try:
             cur.execute(sql)
+            con.commit()
         except sqlite3.OperationalError:
             return self.bad_request("エラー：指定IDのデータベースが見つかりませんでした。")
         con.commit()
@@ -146,9 +174,22 @@ class Result(Challenge):
         cur.execute(sql)
         res = cur.fetchall()
 
+        # 生成画像のリーダーボードで使用するためのデータを用意
+        # (画像のパス, 正誤)
+        fake_image_res = [
+            (
+                img_b if true == 0 else img_a,
+                pred == true
+            )
+            for _, pred, true, img_a, img_b in res
+        ]
+        self.update_fake_img_leader_board(fake_image_res, cur, con)
+
+        # 結果画面で表示する テーブル を作成
+        # HTML のリストを作成 → joinで結合
         result_list = [
-            self.create_row(pred=row[1], true=row[2], img_a=row[3], img_b=row[4])
-            for row in res
+            self.create_row(pred=pred, true=true, img_a=img_a, img_b=img_b)
+            for _, pred, true, img_a, img_b in res
         ]
         result_list = ''.join(result_list)
 
@@ -158,9 +199,9 @@ class Result(Challenge):
 
         return self.load_html("../static/result.html", embedding_dict={
             "result_list": result_list,
-            "acc": str(acc * 100),
-            "correct": str(correct_n),
-            "n": str(n),
+            "acc": acc * 100,
+            "correct": correct_n,
+            "n": n,
         })
 
 

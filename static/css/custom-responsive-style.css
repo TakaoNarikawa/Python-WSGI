@@ -36,14 +36,14 @@
   .mobile-header {
     display: block;
   }
-  #Services {
+  #Challenge {
     padding: 30px 0;
   }
-  #Services h2 {
+  #Challenge h2 {
     font-size: 38px;
     margin-bottom: 30px;
   }
-  #Services .each-services img {
+  #Challenge .each-services img {
     padding-bottom: 10px;
   }
   .each-services {
@@ -65,10 +65,10 @@
     width: 100%;
     height: auto;
   }
-  #OurBlog h2 {
+  #History h2 {
     font-size: 38px;
   }
-  #OurBlog {
+  #History {
     padding: 60px 0;
   }
   .each-block {
@@ -100,14 +100,14 @@
   .blog-wrap {
     height: auto;
   }
-  #OurBlog .each-block {
+  #History .each-block {
     width: 100%;
   }
-  #OurBlog .blog-wrap::before,
-  #OurBlog .each-block::before {
+  #History .blog-wrap::before,
+  #History .each-block::before {
     display: none;
   }
-  #OurBlog .blog-wrap .blog-intro {
+  #History .blog-wrap .blog-intro {
     width: 75%;
   }
   #Testimonials {
@@ -171,29 +171,29 @@
     right: 16%;
     opacity: 1;
   }
-  #OurBlog .each-block::before,
-  #OurBlog .blog-wrap::before {
+  #History .each-block::before,
+  #History .blog-wrap::before {
     display: none;
   }
-  #OurBlog .each-block {
+  #History .each-block {
     width: 100%;
   }
-  #Services {
+  #Challenge {
     padding: 30px 0;
   }
-  #Services h2 {
+  #Challenge h2 {
     font-size: 40px;
     margin-bottom: 30px;
   }
-  #Services .each-services img {
+  #Challenge .each-services img {
     width: 58px;
     margin-bottom: 10px;
   }
-  #Services .each-services h3 {
+  #Challenge .each-services h3 {
     font-size: 22px;
     min-height: 50px;
   }
-  #Services .each-services p {
+  #Challenge .each-services p {
     font-size: 16px;
   }
   #Banner .blacksection::before {
@@ -203,7 +203,7 @@
   }
   #OurWork h2,
   #TestimonialsSlider h2,
-  #OurBlog h2 {
+  #History h2 {
     font-size: 38px;
   }
   #OurWork .each-work {
@@ -244,10 +244,10 @@
   #OurWork .each-work {
     width: 30.6%;
   }
-  #OurBlog .each-block::before {
+  #History .each-block::before {
     right: -53px;
   }
-  #OurBlog .each-block.two::before {
+  #History .each-block.two::before {
     left: -52px;
   }
   #Testimonials .testi-wrapper .each-testi {

@@ -24,7 +24,7 @@ class BasePage:
         html_text = "".join(lines)
 
         for key, value in embedding_dict.items():
-            html_text = html_text.replace(f"%{key}%", value)
+            html_text = html_text.replace(f"%{key}%", str(value))
 
         return html_text.encode('utf-8')
 

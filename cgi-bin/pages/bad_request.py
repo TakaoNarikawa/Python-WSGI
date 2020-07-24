@@ -1,4 +1,4 @@
-from .base import BasePage
+from pages.base import BasePage
 
 class BadRequest(BasePage):
     def body(self, env):

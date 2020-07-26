@@ -15,8 +15,9 @@ def random_string(n=16):
 
 class Index(BasePage):
     def body(self, env):
-        gen_id = random_string()
+        gen_id       = random_string()
         leader_board = self.create_leader_board()
+
         return self.load_html("../static/index.html", embedding_dict={
             "id": gen_id,
             "leader_board": leader_board

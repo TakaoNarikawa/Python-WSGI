@@ -9,7 +9,7 @@ class BasePage:
         return status, header, body
 
     def body(self):
-        pass
+        raise NotImplementedError()
 
     def status(self):
         return '200 OK'

@@ -11,11 +11,17 @@ Python WCGI を用いて Web アプリケーションを作成した
 GAN（Generative Adversarial Network）の Descriminator が行っていることを、
 人間にチャレンジさせてみようというアプリケーションである。
 
+## Requirement
+
+```
+Python 3.6 or higher
+```
+
 ## Getting Started
 
 ```sh
 $ cd cgi-bin
-$ python -m run [-h] [--port PORT] [--dbname DBNAME]
+$ python3 -m run [-h] [--port PORT] [--dbname DBNAME]
 ```
 
 

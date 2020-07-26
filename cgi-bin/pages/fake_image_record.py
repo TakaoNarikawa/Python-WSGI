@@ -33,12 +33,12 @@ class FakeImageRecord(BasePage):
             return self.bad_request("エラー：指定されたパラメータが無効です。")
 
         return self.load_html("../static/fake_image_record.html", embedding_dict={
-            "img_id": img_id,
+            "img_id"            : img_id,
             "leader_board_count": leader_board_count,
-            "rank": record.rank,
-            "decieve_rate": format(record.decieve_rate, '.4f'),
-            "try_count": record.try_count,
-            "decieve_count": record.decieve_count
+            "rank"              : record.rank,
+            "decieve_rate"      : format(record.decieve_rate, '.4f'),
+            "try_count"         : record.try_count,
+            "decieve_count"     : record.decieve_count
         })
 
     def parse(self, env):

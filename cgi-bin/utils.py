@@ -2,7 +2,6 @@ import re
 import sqlite3
 import os
 import random
-from pprint import pprint
 
 class RegexDict(dict):
 
@@ -11,7 +10,7 @@ class RegexDict(dict):
             if re.match(k, item):
                 return v
         raise KeyError
-    def get(self, item, optional):
+    def get(self, item, optional=None):
         try:
             return self[item]
         except:
@@ -31,17 +30,24 @@ class EasyDict(dict):
     def __delattr__(self, name):
         del self[name]
 
+def get_local_ip_addr():
+    ipv4_list = os.popen('ip addr show').read().split("inet ")[1:]
+    ipv4_list = [ipv4.split("/")[0] for ipv4 in ipv4_list]
+    ipv4_list = [ipv4 for ipv4 in ipv4_list if ipv4 != "127.0.0.1"]
+
+    return ipv4_list[0]
+
 def init_db(config, fake_imgs, dummy=False):
     con = sqlite3.connect(config.dbname)
     cur = con.cursor()
 
     # 生成画像のリーダーボードに使用するデータベースを作成する
     # データベースをリセットするべきかをチェック
-    print(f'fake image count: {len(fake_imgs)}')
     table_exists, count_matches = True, True
     try:
         check_table_count = 'select count(*) from images'
         cur.execute(check_table_count)
+
         count = cur.fetchall()[0][0]
         count_matches = len(fake_imgs) == count
 
@@ -63,23 +69,18 @@ def init_db(config, fake_imgs, dummy=False):
         cur.execute(create_table)
         con.commit()
 
-        if dummy: # ダミーデータでDBを初期化
-            dummy_data = create_dummy_data(n=len(fake_imgs))
-            for img, d in zip(fake_imgs, dummy_data):
-                img_name = os.path.splitext(os.path.basename(img))[0]
-                insert_row = f'''
-                    insert into images values ("{img_name}", {d.try_count}, {d.decieve_count})
-                '''
-                cur.execute(insert_row)
-                con.commit()
-        else:
-            for img in fake_imgs:
-                img_name = os.path.splitext(os.path.basename(img))[0]
-                insert_row = f'''
-                    insert into images values ("{img_name}", 0, 0)
-                '''
-                cur.execute(insert_row)
-                con.commit()
+        # ダミーデータでDBを初期化
+        dummy_data = create_dummy_data(n=len(fake_imgs))
+        for img, d in zip(fake_imgs, dummy_data):
+            img_name      = os.path.splitext(os.path.basename(img))[0]
+            try_count     = d.try_count     if dummy else 0
+            decieve_count = d.decieve_count if dummy else 0
+
+            insert_row = f'''
+                insert into images values ("{img_name}", {try_count}, {decieve_count})
+            '''
+            cur.execute(insert_row)
+            con.commit()
 
     con.commit()
     cur.close()

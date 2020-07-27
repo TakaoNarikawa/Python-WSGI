@@ -9,13 +9,13 @@ from pages.base import BasePage
 
 cgitb.enable()
 
-real_imgs = [
-    f"../cgi-bin/real_imgs/{os.path.basename(f)}"
-    for f in glob.glob("./real_imgs/*.jpg")
+imgs_real = [
+    f"../cgi-bin/imgs_real/{os.path.basename(f)}"
+    for f in glob.glob("./imgs_real/*.jpg")
 ]
-fake_imgs = [
-    f"../cgi-bin/fake_imgs/{os.path.basename(f)}"
-    for f in glob.glob("./fake_imgs/*.jpg")
+imgs_fake = [
+    f"../cgi-bin/imgs_fake/{os.path.basename(f)}"
+    for f in glob.glob("./imgs_fake/*.jpg")
 ]
 
 def optional_parse(s, optional=0):
@@ -69,7 +69,7 @@ class Challenge(BasePage):
                 cur.execute(create_table)
                 con.commit()
 
-                for j, (real_img, fake_img) in enumerate(zip(random.sample(real_imgs, n), random.sample(fake_imgs, n))):
+                for j, (real_img, fake_img) in enumerate(zip(random.sample(imgs_real, n), random.sample(imgs_fake, n))):
                     true_v = 1 if random.random() > .5 else 0
                     insert_value = f'''
                         insert into {user_id} values

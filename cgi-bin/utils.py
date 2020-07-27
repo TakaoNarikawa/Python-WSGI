@@ -37,7 +37,7 @@ def get_local_ip_addr():
 
     return ipv4_list[0]
 
-def init_db(config, fake_imgs, dummy=False):
+def init_db(config, imgs_fake, dummy=False):
     con = sqlite3.connect(config.dbname)
     cur = con.cursor()
 
@@ -49,7 +49,7 @@ def init_db(config, fake_imgs, dummy=False):
         cur.execute(check_table_count)
 
         count = cur.fetchall()[0][0]
-        count_matches = len(fake_imgs) == count
+        count_matches = len(imgs_fake) == count
 
     except sqlite3.OperationalError:
         # データベースが存在しない
@@ -70,8 +70,8 @@ def init_db(config, fake_imgs, dummy=False):
         con.commit()
 
         # ダミーデータでDBを初期化
-        dummy_data = create_dummy_data(n=len(fake_imgs))
-        for img, d in zip(fake_imgs, dummy_data):
+        dummy_data = create_dummy_data(n=len(imgs_fake))
+        for img, d in zip(imgs_fake, dummy_data):
             img_name      = os.path.splitext(os.path.basename(img))[0]
             try_count     = d.try_count     if dummy else 0
             decieve_count = d.decieve_count if dummy else 0

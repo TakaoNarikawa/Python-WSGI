@@ -7,9 +7,9 @@ import pages
 import resource
 import utils
 
-fake_imgs = [
-    f"../cgi-bin/fake_imgs/{os.path.basename(f)}"
-    for f in glob.glob("./fake_imgs/*.jpg")
+imgs_fake = [
+    f"../cgi-bin/imgs_fake/{os.path.basename(f)}"
+    for f in glob.glob("./imgs_fake/*.jpg")
 ]
 
 class Application:
@@ -46,5 +46,5 @@ class Application:
         return self.router.get(request_path, self.bad_request)(env)
 
     def init_db(self, dummy=False):
-        utils.init_db(config=self.config, fake_imgs=fake_imgs, dummy=dummy)
+        utils.init_db(config=self.config, imgs_fake=imgs_fake, dummy=dummy)
 

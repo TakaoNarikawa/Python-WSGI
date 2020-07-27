@@ -41,9 +41,9 @@ class Challenge(BasePage):
 
         return ans, user_id, n, i
 
-    # i: 問題のインデックス, i=0->回答0, i=3->回答3
-    # n: 全問題数, n=5,10,50
-    # ans: i-1における回答, ans="A", "B"
+    # i      : 問題のインデックス, i=0->回答0, i=3->回答3
+    # n      : 全問題数, n=5,10,50
+    # ans    : i-1における回答, ans="A", "B"
     # user_id: 回答者に毎回ランダムに割り当てられるid
     def body(self, env):
         ans, user_id, n, i = self.parse(env)
@@ -153,6 +153,7 @@ class Result(Challenge):
                 UPDATE images SET try_count=try_count+1
                 where images.id == "{img_id}";
             '''
+            # 正しくない場合は decieve_count も増やす
             if not correct:
                 update_leader_board += f'''
                 UPDATE images SET decieve_count=decieve_count+1

@@ -77,7 +77,8 @@ def init_db(config, imgs_fake, dummy=False):
             decieve_count = d.decieve_count if dummy else 0
 
             insert_row = f'''
-                insert into images values ("{img_name}", {try_count}, {decieve_count})
+                insert into images values
+                ("{img_name}", {try_count}, {decieve_count})
             '''
             cur.execute(insert_row)
             con.commit()
@@ -92,8 +93,7 @@ def create_dummy_data(n, k=10000):
         for i in range(n)
     ]
     for i in random.choices(range(n), k=k):
-        dummy_data[i].try_count += 1
-        if random.random() > .5:
-            dummy_data[i].decieve_count += 1
+        dummy_data[i].try_count     += 1
+        dummy_data[i].decieve_count += 1 if random.random() > .5 else 0
 
     return dummy_data

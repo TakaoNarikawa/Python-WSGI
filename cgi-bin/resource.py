@@ -10,13 +10,10 @@ cgitb.enable()
 class Static(BasePage):
     def body(self, env):
         request_path = env.get("PATH_INFO")
-        # bootstrap.min.css.mapは読み込みエラーが発生するのでスルー
-        if request_path.find("bootstrap.min.css.map") > 0:
-            return "".encode('utf-8')
+
         try:
             with open(f"..{request_path}") as f:
                 static = f.read().encode('utf-8')
-
         except Exception as e:
             raise (e)
 
@@ -28,6 +25,7 @@ class Css(Static):
             ('Content-Type', 'text/css; charset=utf-8'),
             ('Content-Length', str(content_length))
         ]
+
 class Js(Static):
     def header(self, content_length, env):
         return [
@@ -41,7 +39,6 @@ class Image(BasePage):
         try:
             with open(f"..{request_path}", "rb") as f:
                 static = f.read()
-
         except Exception as e:
             raise (e)
 

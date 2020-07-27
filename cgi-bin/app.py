@@ -15,15 +15,15 @@ imgs_fake = [
 class Application:
     def __init__(self, args):
         self.router = {
-            r'.*\.css': resource.Css,
-            r'.*\.js' : resource.Js,
-            r'.*\.png': resource.Image,
-            r'.*\.jpg': resource.Image,
-
             r'^/$'           : pages.Index,
             r'^/challenge.*$': pages.Challenge,
             r'^/result.*$'   : pages.Result,
             r'^/image.*$'    : pages.FakeImageRecord,
+
+            r'.*\.css': resource.Css,
+            r'.*\.js' : resource.Js,
+            r'.*\.png': resource.Image,
+            r'.*\.jpg': resource.Image,
         }
         self.config = args
         self.router = {
@@ -31,7 +31,7 @@ class Application:
             for key, cls in self.router.items()
         }
         # 正規表現に対応させる
-        self.router = utils.RegexDict(self.router)
+        self.router      = utils.RegexDict(self.router)
         self.bad_request = pages.BadRequest(config=self.config)
 
         print("Application initialized")

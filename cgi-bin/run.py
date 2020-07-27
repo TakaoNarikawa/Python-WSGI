@@ -33,6 +33,7 @@ def prepare_imgs():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='2020春学期 コンピュータ科学科実験 WSGI 課題')
+
     parser.add_argument('--port', type=int, default=8080,
                         help='WSGIサーバーで使用するポート')
     parser.add_argument('--dbname', type=str, default='database.db',

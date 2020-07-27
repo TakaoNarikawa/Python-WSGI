@@ -21,7 +21,7 @@ Python 3.6 or higher
 
 ```sh
 $ cd cgi-bin
-$ python3 -m run [-h] [--port PORT] [--dbname DBNAME]
+$ python3 -m run [--port PORT] [--dbname DBNAME]
 ```
 
 
